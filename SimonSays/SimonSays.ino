@@ -49,13 +49,16 @@ void  delayedReadInput(int rec){
   }
 }
 
+
+// Check if anything is pressed
+
 bool checkPressed(){
   if(stateA == 1 || stateB == 1 || stateC == 1 || stateD == 1)
   return true;
   return false;
 }
-//
-//NATURAL
+
+//NATURAL Mode
 
 void natural(){
   digitalWrite(lightA, HIGH);
@@ -63,6 +66,7 @@ void natural(){
   digitalWrite(lightC, LOW);
   digitalWrite(lightD, LOW);
 
+  //Loops forwards to see if anything has been pressed
   int pin;
   const int delayTime = 150;
   delay(delayTime);
@@ -74,6 +78,8 @@ void natural(){
     readInput();
     if(checkPressed()) return;
   }
+
+  //Loops backwards
   for(int i = 4; i> 0;i--){
     pin = 7 + i;
     digitalWrite(pin, HIGH);
@@ -84,7 +90,7 @@ void natural(){
   }
 }
 
-//BLINK
+//BLINK animation
 
 void blinking(){
   int pin;
@@ -253,7 +259,7 @@ void permaLight(){
   }
 }
 
-//WACK-A-MOLE
+//WHAC-A-MOLE
 
 void reactGame(){
 
